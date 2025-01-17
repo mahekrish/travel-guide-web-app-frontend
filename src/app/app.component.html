@@ -1,0 +1,23 @@
+<div class="app-container">
+  <div class="header-text">AI Travel Itinerary Generator</div>
+  <main class="body-section">
+    <app-stepper
+      *ngIf="!itinerary && selectedUi === 'stepper'"
+      (goBack)="resetUiSelection()"
+      (generateItinerary)="generateItinerary($event)"
+    ></app-stepper>
+    <app-form
+      *ngIf="!itinerary && selectedUi === 'form'"
+      (goBack)="resetUiSelection()"
+      (generateItinerary)="generateItinerary($event)"
+    ></app-form>
+    <app-show-itinerary
+      *ngIf="itinerary"
+      [itinerary]="itinerary"
+      (goBack)="resetUiSelection()"
+    ></app-show-itinerary>
+  </main>
+  <div class="overlay" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

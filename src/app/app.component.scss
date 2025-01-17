@@ -1,0 +1,59 @@
+.app-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+  background-image: url("../assets/travel-bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom;
+
+  .header-text {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #7d393a;
+    font-weight: 700;
+  }
+  .body-section {
+    height: calc(100% - 64px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .ui-selection-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  app-show-itinerary {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+mat-spinner {
+  width: 50px;
+  height: 50px;
+}

@@ -1,0 +1,62 @@
+@use "@angular/material" as mat;
+
+$primary-color: #7d393a;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.button-overrides(
+    (
+      filled-container-color: $primary-color,
+      filled-label-text-color: #fff,
+    )
+  );
+  @include mat.stepper-overrides(
+    (
+      header-icon-foreground-color: #fff,
+      header-selected-state-icon-background-color: $primary-color,
+      container-color: transparent,
+    )
+  );
+  @include mat.progress-spinner-overrides(
+    (
+      active-indicator-color: $primary-color,
+    )
+  );
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.py-16px {
+  padding: 16px 0;
+}
+.pt-16px {
+  padding-top: 16px;
+}
+.pb-16px {
+  padding: 16px 0;
+}
+.generated-itinerary-card {
+  .itinerary-content {
+  }
+}
+
+.d-none {
+  display: none !important;
+}
+
+.mat-stepper-horizontal-line {
+  display: none !important;
+}

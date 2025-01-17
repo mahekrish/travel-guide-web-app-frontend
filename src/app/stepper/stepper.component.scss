@@ -1,0 +1,70 @@
+.button-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  button {
+    min-width: 150px;
+    &.edit-mode {
+      color: #2d2e49;
+    }
+  }
+}
+.itinerary-card-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.stepper-container {
+  width: 100%;
+
+  .stepper-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.inner-stepper-label {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.interest-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  .chip {
+    padding: 16px;
+    border-radius: 8px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+    box-shadow: 1px 1px 7px 1px #c0c0c0;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      background-color: #e9e1c2;
+    }
+  }
+}
+
+.description {
+  font-size: 16px;
+  padding: 0 16px;
+  font-weight: 300;
+}

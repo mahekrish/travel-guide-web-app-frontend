@@ -1,0 +1,137 @@
+<div class="stepper-container">
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <ng-template matStepLabel>Fill out your trip details</ng-template>
+      @if (showInterestSelection) {
+
+      <div class="inner-stepper-label">Tell us what you’re interested in?</div>
+      <div class="interest-chips">
+        @for (interest of interests; track $index) {
+        <div
+          class="chip mat-elevation-z2"
+          [ngClass]="{
+            active: interest.key === selectedInterest
+          }"
+          (click)="setInterests(interest.key)"
+        >
+          {{ interest.value }}
+        </div>
+        }
+      </div>
+      <div class="button-actions">
+        <button
+          mat-flat-button
+          [disabled]="!selectedInterest"
+          (click)="showInterestSelection = false"
+        >
+          Next
+        </button>
+      </div>
+      } @else {
+      <form [formGroup]="firstFormGroup" class="stepper-form">
+        <div class="inner-stepper-label">Hey, Choose your destination...</div>
+        <mat-form-field class="w-50 py-16px" appearance="outline">
+          <mat-label>{{ destinationLabel }}</mat-label>
+          <mat-select
+            formControlName="destination"
+            name="destination"
+            placeholder="{{ destinationLabel }}"
+          >
+            @for (location of locations; track location) {
+            <mat-option [value]="location">{{ location }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <div class="button-actions">
+          <button
+            mat-flat-button
+            [disabled]="!isEditable"
+            (click)="showInterestSelection = true"
+          >
+            Back
+          </button>
+          <button mat-flat-button matStepperNext>Next</button>
+        </div>
+      </form>
+      }
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <form [formGroup]="secondFormGroup" class="stepper-form">
+        <ng-template matStepLabel>
+          Fill out your number of trip duration
+        </ng-template>
+        <div class="inner-stepper-label">Choose your trip duration...</div>
+        <div class="description">Plan your trip for 1 to 7 days</div>
+        <mat-form-field class="w-50 py-16px" appearance="outline">
+          <mat-label>Number of Days</mat-label>
+          <input
+            matInput
+            formControlName="days"
+            placeholder="Number of Days"
+            required
+            type="number"
+          />
+          <mat-error *ngIf="secondFormGroup.get('days')?.errors?.['max']">
+            Maximum trip duration is 7 days only
+          </mat-error>
+          <mat-error *ngIf="secondFormGroup.get('days')?.errors?.['min']">
+            Minimum trip duration is 1 day
+          </mat-error>
+        </mat-form-field>
+
+        <div class="button-actions">
+          <button mat-flat-button matStepperPrevious [disabled]="!isEditable">
+            Back
+          </button>
+          <button mat-flat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+      <form [formGroup]="thirdFormGroup" class="stepper-form">
+        <ng-template matStepLabel>Fill out your budget</ng-template>
+        <mat-form-field class="w-50 py-16px" appearance="outline">
+          <mat-label>Budget</mat-label>
+          <input
+            matInput
+            formControlName="budget"
+            placeholder="Budget"
+            required
+            type="number"
+          />
+          <mat-error *ngIf="thirdFormGroup.get('budget')?.errors?.['min']">
+            Minimum budget for trip is 1000
+          </mat-error>
+        </mat-form-field>
+        <div class="button-actions">
+          <button mat-flat-button matStepperPrevious [disabled]="!isEditable">
+            Back
+          </button>
+          <button mat-flat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Generate Itinerary</ng-template>
+      <div class="inner-stepper-label">
+        Now you can click Generate button to generate your itinerary...
+      </div>
+      <div class="button-actions">
+        <button mat-flat-button matStepperPrevious [disabled]="!isEditable">
+          Back
+        </button>
+        <button mat-flat-button (click)="stepper.reset(); backFn()">
+          Reset
+        </button>
+        <button mat-flat-button (click)="generateItineraryFn()">
+          Generate
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  <div class="button-actions pb-16px">
+    <button mat-button class="edit-mode" (click)="isEditable = !isEditable">
+      {{ !isEditable ? "Enable edit mode" : "Disable edit mode" }}
+    </button>
+  </div>
+</div>

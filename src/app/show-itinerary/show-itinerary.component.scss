@@ -1,0 +1,50 @@
+.generated-itinerary-card {
+  width: 95%;
+  height: 95%;
+  background-color: #f1f1f1f0;
+  mat-card-content {
+    // width: 100%;
+    height: calc(100% - 16px - 16px);
+    padding-bottom: 0;
+  }
+  .itinerary-content {
+    overflow-y: scroll;
+    height: calc(100% - 64px);
+
+    /* Customize the entire scrollbar */
+    &::-webkit-scrollbar {
+      width: 10px; /* Width of the scrollbar */
+      height: 10px; /* Height of the scrollbar for horizontal scrolling */
+    }
+    /* Customize the scrollbar track */
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Light gray background */
+      border-top-right-radius: 10px; /* Rounded corners */
+      border-bottom-right-radius: 10px; /* Rounded corners */
+    }
+
+    /* Customize the scrollbar thumb (the draggable part) */
+    &::-webkit-scrollbar-thumb {
+      background: #888; /* Darker gray thumb */
+      border-radius: 10px; /* Rounded corners */
+      border: 1px solid #f1f1f1; /* Add a border for spacing */
+    }
+
+    /* Customize the scrollbar thumb when hovered */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555; /* Darker gray on hover */
+    }
+
+    /* Optional: Customize the scrollbar corners */
+    &::-webkit-scrollbar-corner {
+      background: #f1f1f1; /* Match the track background */
+    }
+  }
+  .bottom-button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 64px;
+    gap: 16px;
+  }
+}

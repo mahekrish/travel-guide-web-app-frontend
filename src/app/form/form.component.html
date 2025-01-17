@@ -1,0 +1,53 @@
+<mat-card class="itinerary-card" appearance="outlined">
+  <mat-card-header class="itinerary-card-header">
+    <mat-card-title>AI Travel Itinerary Generator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="generateItineraryFn()" class="itinerary-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Destination</mat-label>
+        <input
+          matInput
+          placeholder="Destination"
+          type="text"
+          id="location"
+          [(ngModel)]="location"
+          name="location"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Number of Days</mat-label>
+        <input
+          matInput
+          placeholder="Number of Days"
+          type="number"
+          id="days"
+          [(ngModel)]="days"
+          name="days"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Budget</mat-label>
+        <input
+          matInput
+          placeholder="Budget"
+          type="number"
+          id="budget"
+          [(ngModel)]="budget"
+          name="budget"
+          required
+        />
+      </mat-form-field>
+    </form>
+    <!-- <div *ngIf="itinerary">
+        <h3>Generated Itinerary:</h3>
+        <div [innerHTML]="itinerary"></div>
+      </div> -->
+  </mat-card-content>
+  <mat-card-actions class="itinerary-card-actions">
+    <button mat-flat-button (click)="generateItineraryFn()">Generate</button>
+    <button mat-flat-button (click)="backFn()">Go to UI Selection</button>
+  </mat-card-actions>
+</mat-card>
